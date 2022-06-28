@@ -157,7 +157,8 @@ class ModelLexer implements Lexer
         if (isset($columns['relationships'])) {
             if (is_array($columns['relationships'])) {
                 foreach ($columns['relationships'] as $type => $relationships) {
-                    foreach (explode(',', $relationships) as $reference) {
+                    $relationshipItems = is_array($relationships) ? $relationships : explode(',', $relationships);
+                    foreach ($relationshipItems as $reference) {
                         $model->addRelationship(self::$relationships[strtolower($type)], trim($reference));
                     }
                 }

@@ -24,7 +24,7 @@ class BuilderTest extends TestCase
 
         $blueprint = \Mockery::mock(Blueprint::class);
         $blueprint->expects('parse')
-            ->with($draft, true)
+            ->with($draft, false)
             ->andReturn($tokens);
         $blueprint->expects('analyze')
             ->with($tokens + ['cache' => []])
@@ -71,7 +71,7 @@ class BuilderTest extends TestCase
 
         $blueprint = \Mockery::mock(Blueprint::class);
         $blueprint->expects('parse')
-            ->with($draft, true)
+            ->with($draft, false)
             ->andReturn($tokens);
         $blueprint->expects('parse')
             ->with('cached blueprint content')
@@ -128,7 +128,7 @@ class BuilderTest extends TestCase
 
         $blueprint = \Mockery::mock(Blueprint::class);
         $blueprint->expects('parse')
-            ->with($draft, false)
+            ->with($draft, true)
             ->andReturn($tokens);
         $blueprint->expects('analyze')
             ->with($tokens + ['cache' => []])
